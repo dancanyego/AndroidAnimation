@@ -4,4 +4,6 @@
 	android:fromXDelta="0"
 	android:fromYDelta="0"
 	android:toXDelta="150"
-	android:toYDelta="150" />
+	android:toYDelta="150"
+	android:repeatCount="1"
+	android:repeatMode="reverse"/>
