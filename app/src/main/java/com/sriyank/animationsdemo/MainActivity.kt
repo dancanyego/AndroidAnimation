@@ -3,17 +3,18 @@ package com.sriyank.animationsdemo
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
+import android.view.animation.*
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+
+
 
 class MainActivity : AppCompatActivity(), Animation.AnimationListener {
 
 	private var scaleAnimation: Animation? = null
 	private var translateAnimation: Animation? = null
-	private var rotateAnimation: Animation? = null
 	private var alphaAnimation: Animation? = null
+	private var rotateAnimation: Animation? = null
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -23,29 +24,63 @@ class MainActivity : AppCompatActivity(), Animation.AnimationListener {
 
 	fun scaleAnimation(view: View) {
 
-		scaleAnimation = AnimationUtils.loadAnimation(this, R.anim.scale_anim)
-		scaleAnimation?.setAnimationListener(this)
+		scaleAnimation = ScaleAnimation(
+				1.0f, 3.0f,
+				1.0f, 3.0f,
+				Animation.RELATIVE_TO_SELF, 0.5f,
+				Animation.RELATIVE_TO_SELF, 0.5f
+		)
+		scaleAnimation?.apply {
+			duration = 1000
+			repeatCount = 1
+			repeatMode = Animation.REVERSE
+			setAnimationListener(this@MainActivity)
+		}
 		targetImage.startAnimation(scaleAnimation)
 	}
 
 	fun translateAnimation(view: View) {
 
-		translateAnimation = AnimationUtils.loadAnimation(this, R.anim.translate_anim)
-		translateAnimation?.setAnimationListener(this)
+		translateAnimation = TranslateAnimation(
+				Animation.ABSOLUTE, 0.0f,
+				Animation.ABSOLUTE, 150f,
+				Animation.ABSOLUTE, 0.0f,
+				Animation.ABSOLUTE, 150.0f
+		)
+		translateAnimation?.apply {
+			duration = 1000
+			repeatCount = 1
+			repeatMode = Animation.REVERSE
+			setAnimationListener(this@MainActivity)
+		}
 		targetImage.startAnimation(translateAnimation)
 	}
 
 	fun fadeAnimation(view: View) {
 
-		alphaAnimation = AnimationUtils.loadAnimation(this, R.anim.alpha_anim)
-		alphaAnimation?.setAnimationListener(this)
+		alphaAnimation = AlphaAnimation(1.0f, 0.0f)
+		alphaAnimation?.apply {
+			duration = 1500
+			repeatCount = 1
+			repeatMode = Animation.REVERSE
+			setAnimationListener(this@MainActivity)
+		}
 		targetImage.startAnimation(alphaAnimation)
 	}
 
 	fun rotateAnimation(view: View) {
 
-		rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate_anim)
-		rotateAnimation?.setAnimationListener(this)
+		rotateAnimation = RotateAnimation(
+				0.0f, -180f,
+				Animation.RELATIVE_TO_SELF, 0.5f,
+				Animation.RELATIVE_TO_SELF, 0.5f
+		)
+		rotateAnimation?.apply {
+			duration = 1000
+			repeatCount = 1
+			repeatMode = Animation.REVERSE
+			setAnimationListener(this@MainActivity)
+		}
 		targetImage.startAnimation(rotateAnimation)
 	}
 
