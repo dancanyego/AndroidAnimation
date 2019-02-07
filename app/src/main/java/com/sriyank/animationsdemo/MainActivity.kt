@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity(), Animation.AnimationListener {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
 
+		targetImage.setOnClickListener {
+			Toast.makeText(this, "View Clicked", Toast.LENGTH_SHORT).show()
+		}
 	}
 
 	fun scaleAnimation(view: View) {
@@ -43,14 +46,13 @@ class MainActivity : AppCompatActivity(), Animation.AnimationListener {
 
 		translateAnimation = TranslateAnimation(
 				Animation.ABSOLUTE, 0.0f,
-				Animation.ABSOLUTE, 150f,
 				Animation.ABSOLUTE, 0.0f,
-				Animation.ABSOLUTE, 150.0f
+				Animation.ABSOLUTE, 0.0f,
+				Animation.ABSOLUTE, 350.0f
 		)
 		translateAnimation?.apply {
 			duration = 1000
-			repeatCount = 1
-			repeatMode = Animation.REVERSE
+			fillAfter = true
 			setAnimationListener(this@MainActivity)
 		}
 		targetImage.startAnimation(translateAnimation)
@@ -94,7 +96,7 @@ class MainActivity : AppCompatActivity(), Animation.AnimationListener {
 			Toast.makeText(this, "Rotate Animation Started", Toast.LENGTH_SHORT).show()
 
 		if (animation == translateAnimation)
-			Toast.makeText(this, "Translate Animation Started", Toast.LENGTH_SHORT).show()
+//			Toast.makeText(this, "Translate Animation Started", Toast.LENGTH_SHORT).show()
 
 		if (animation == alphaAnimation)
 			Toast.makeText(this, "Alpha Animation Started", Toast.LENGTH_SHORT).show()
@@ -103,11 +105,11 @@ class MainActivity : AppCompatActivity(), Animation.AnimationListener {
 
 	override fun onAnimationEnd(animation: Animation?) {
 
-		Toast.makeText(this, "Animation Ended", Toast.LENGTH_SHORT).show()
+//		Toast.makeText(this, "Animation Ended", Toast.LENGTH_SHORT).show()
 	}
 
 	override fun onAnimationRepeat(animation: Animation?) {
 
-		Toast.makeText(this, "Animation Repeated", Toast.LENGTH_SHORT).show()
+//		Toast.makeText(this, "Animation Repeated", Toast.LENGTH_SHORT).show()
 	}
 }
