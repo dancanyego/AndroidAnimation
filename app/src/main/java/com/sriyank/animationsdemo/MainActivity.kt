@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity(), Animation.AnimationListener {
 			Toast.makeText(this, "Rotate Animation Started", Toast.LENGTH_SHORT).show()
 
 		if (animation == translateAnimation)
-//			Toast.makeText(this, "Translate Animation Started", Toast.LENGTH_SHORT).show()
+			Toast.makeText(this, "Translate Animation Started", Toast.LENGTH_SHORT).show()
 
 		if (animation == alphaAnimation)
 			Toast.makeText(this, "Alpha Animation Started", Toast.LENGTH_SHORT).show()
@@ -105,11 +105,11 @@ class MainActivity : AppCompatActivity(), Animation.AnimationListener {
 
 	override fun onAnimationEnd(animation: Animation?) {
 
-//		Toast.makeText(this, "Animation Ended", Toast.LENGTH_SHORT).show()
+		Toast.makeText(this, "Animation Ended", Toast.LENGTH_SHORT).show()
 	}
 
 	override fun onAnimationRepeat(animation: Animation?) {
 
-//		Toast.makeText(this, "Animation Repeated", Toast.LENGTH_SHORT).show()
+		Toast.makeText(this, "Animation Repeated", Toast.LENGTH_SHORT).show()
 	}
 }
