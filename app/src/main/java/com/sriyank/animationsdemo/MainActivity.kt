@@ -12,9 +12,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var isChecked = true
+
         avdImage.setOnClickListener {
-            checkToClose()
+            if (isChecked)
+                checkToClose()
+            else
+                closeToCheck()
+
+            isChecked = !isChecked
         }
+    }
+
+    private fun closeToCheck() {
+
+        avdImage.setImageResource(R.drawable.avd_close_to_check)
+        val avdCheckToClose = avdImage.drawable as AnimatedVectorDrawable
+        avdCheckToClose.start()
     }
 
     private fun checkToClose() {
