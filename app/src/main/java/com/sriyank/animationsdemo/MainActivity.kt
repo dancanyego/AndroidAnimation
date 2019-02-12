@@ -1,36 +1,26 @@
 package com.sriyank.animationsdemo
 
-import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var batteryAnimation: AnimationDrawable
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        avdImage.setOnClickListener {
+            checkToClose()
+        }
     }
 
-    override fun onStart() {
-        super.onStart()
+    private fun checkToClose() {
 
-        targetImage.setBackgroundResource(R.drawable.battery_animation_list)
-        batteryAnimation = targetImage.background as AnimationDrawable
-        batteryAnimation.start()
-    }
-
-    // Button click event handler 
-    fun startStopAnimation(view: View) {
-
-        if (batteryAnimation.isRunning)
-            batteryAnimation.stop()
-        else
-            batteryAnimation.start()
+        avdImage.setImageResource(R.drawable.avd_check_to_close)
+        val avdCheckToClose = avdImage.drawable as AnimatedVectorDrawable
+        avdCheckToClose.start()
     }
 }
